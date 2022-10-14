@@ -20,4 +20,10 @@ export class ItemRepository extends Repository<Item> {
 
     return item;
   }
+
+  async updateItem(item: Item): Promise<Item> {
+    item.status = ItemStatus.SOLD_OUT;
+    await this.save(item);
+    return item;
+  }
 }
