@@ -6,24 +6,12 @@ import { ItemStatus } from './item-status.enum';
 @EntityRepository(Item)
 export class ItemRepository extends Repository<Item> {
   async createItem(createItemDto: CreateItemDto): Promise<Item> {
-    const { name, price, description } = createItemDto;
     const item = this.create({
-      name,
-      price,
-      description,
+      ...createItemDto,
       status: ItemStatus.ON_SALE,
       createdAt: new Date().toISOString(),
       updatedAt: new Date().toISOString(),
     });
-
-    await this.save(item);
-
-    return item;
-  }
-
-  async updateItem(item: Item): Promise<Item> {
-    item.status = ItemStatus.SOLD_OUT;
-    item.updatedAt = new Date().toISOString();
     await this.save(item);
     return item;
   }
