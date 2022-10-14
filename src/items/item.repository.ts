@@ -23,6 +23,7 @@ export class ItemRepository extends Repository<Item> {
 
   async updateItem(item: Item): Promise<Item> {
     item.status = ItemStatus.SOLD_OUT;
+    item.updatedAt = new Date().toISOString();
     await this.save(item);
     return item;
   }

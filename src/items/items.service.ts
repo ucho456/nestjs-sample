@@ -29,6 +29,6 @@ export class ItemsService {
   }
 
   delete(id: string): void {
-    this.items = this.items.filter((i) => i.id !== id);
+    this.itemRepository.delete(id);
   }
 }
