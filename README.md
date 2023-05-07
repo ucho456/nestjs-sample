@@ -1,2 +1,2 @@
 # nestjs-sample
-nestjsで作成したAPI serverのサンプルです。
+This is a sample API server created in Nestjs.
